@@ -1,0 +1,117 @@
+.todo-container {
+    margin: 50px auto;
+    max-width: 600px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.todo-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.todo-container>div:nth-child(2) {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.todo-container input[type="text"] {
+    flex: 1;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.todo-container input[type="text"]:focus {
+    border-color: #4a90e2;
+}
+
+.todo-container button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.todo-container button:hover {
+    background: #357abd;
+}
+
+.todo-container>div:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.todo-container>div:nth-child(3)>div {
+    padding: 15px 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 16px;
+    color: #333;
+}
+
+.todo-container>div:nth-child(3)>div:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.todo-image {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .logo {
+        animation: logo-spin infinite 20s linear;
+    }
+}
+
+.card {
+    padding: 2em;
+}
+
+.read-the-docs {
+    color: #888;
+}
