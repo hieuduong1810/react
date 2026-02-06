@@ -3,8 +3,19 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
+// () => { }
+const App = () => {
   const [count, setCount] = useState(0)
+
+  // function myFunction() {
+  //   console.log('This is a sample function')
+  // }
+
+  const myFunction = () => {
+    console.log('This is a sample function')
+  }
+
+  myFunction()
 
   return (
     <>
