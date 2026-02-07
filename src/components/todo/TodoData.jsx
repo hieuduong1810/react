@@ -1,24 +1,22 @@
+import './todo.css';
+
 const TodoData = (props) => {
-    //props là một biến object {}
-    // {
-    //     name: "Eric",
-    //     age: 25,
-    //     data: {}
-    // }
-    // destructuring object
-    // const { name, age, data } = props
-    // const name = props.name;
-    // const age = props.age;
-    // const data = props.data;
-    console.log("check log: ", props)
+    const { todoList, deleteTodo } = props;
+    const handleClick = (id) => {
+        deleteTodo(id)
+    }
     return (
-        <div>
-            <div>My name is {name}</div>
-            <div>Learning React</div>
-            <div>Watching Youtube</div>
-            <div>
-                {JSON.stringify(props.todoList)}
-            </div>
+        <div className='todo-data'>
+            {todoList.map((item, index) => {
+                return (
+                    <div className={`todo-item`} key={item.id}>
+                        <div>{item.name}</div>
+                        <button
+                            onClick={() => handleClick(item.id)}
+                        >Delete</button>
+                    </div>
+                )
+            })}
         </div>
     )
 }
