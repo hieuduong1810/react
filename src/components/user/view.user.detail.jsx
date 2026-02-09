@@ -47,7 +47,6 @@ const ViewUserDetail = (props) => {
                     description: JSON.stringify(resUpdateAvatar.message)
                 })
             }
-            console.log(">>> check newAvatar ", newAvatar)
         }
         else {
             //failed

@@ -1,14 +1,35 @@
-import { Link, NavLink } from 'react-router-dom'
-import { Menu } from 'antd'
-import { AppstoreOutlined, AuditOutlined, HomeOutlined, MailOutlined, SettingOutlined, UsergroupAddOutlined } from '@ant-design/icons';
-import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
+import { Menu, message } from 'antd'
+import { AuditOutlined, HomeOutlined, SettingOutlined, UsergroupAddOutlined, LoginOutlined, AliwangwangOutlined } from '@ant-design/icons';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../context/auth.context';
+import { logoutUserAPI } from '../../services/api.service';
 
 const Header = () => {
     const [current, setCurrent] = useState('');
+    const navigate = useNavigate()
+    const { user, setUser } = useContext(AuthContext)
     const onClick = e => {
-        console.log('click ', e);
         setCurrent(e.key);
     };
+
+    const handleLogout = async () => {
+        const res = await logoutUserAPI();
+        if (res.data) {
+            localStorage.removeItem("access_token")
+            setUser({
+                email: "",
+                phone: "",
+                fullName: "",
+                role: "",
+                avatar: "",
+                id: "",
+            })
+            message.success("Logout thành công")
+            navigate("/")
+
+        }
+    }
 
     const items = [
         {
@@ -25,7 +46,23 @@ const Header = () => {
             label: <Link to={"/books"}>Books</Link>,
             key: 'books',
             icon: <AuditOutlined />,
-        }
+        },
+        ...(!user.id ? [{
+            label: <Link to={"/login"}>Đăng nhập</Link>,
+            key: 'login',
+            icon: <LoginOutlined />,
+        }] : []),
+        ...(user.id ? [{
+            label: `Welcome ${user.fullName}`,
+            key: 'settings',
+            icon: <AliwangwangOutlined />,
+            children: [
+                {
+                    label: <span onClick={() => handleLogout()}>Đăng xuất</span>,
+                    key: 'logout'
+                },
+            ],
+        }] : []),
     ];
     return (
         <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />

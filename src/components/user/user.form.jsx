@@ -18,7 +18,6 @@ const UserForm = (props) => {
                 message: "create user",
                 description: "Tạo user thành công"
             })
-            console.log("check res: ", res.data)
             resetAndCloseModal()
             await loadUser()
         } else {

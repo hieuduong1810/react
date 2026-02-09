@@ -11,7 +11,6 @@ const UpdateUserModal = (props) => {
 
     //next dataUpdate != prev dataUpdate
     useEffect(() => {
-        console.log("check data props: ", dataUpdate)
         if (dataUpdate) {
             setId(dataUpdate._id)
             setFullName(dataUpdate.fullName)
@@ -26,7 +25,6 @@ const UpdateUserModal = (props) => {
                 message: "update user",
                 description: "Cập nhật user thành công"
             })
-            console.log("check res: ", res.data)
             resetAndCloseModal()
             await loadUser()
         } else {
