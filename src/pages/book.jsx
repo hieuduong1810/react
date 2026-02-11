@@ -1,7 +1,14 @@
+import { useEffect, useState } from "react";
+import BookTable from "../components/book/book.table";
+import { fetchAllBookAPI } from "../services/api.service";
 
 const BookPage = () => {
     return (
-        <div>books page</div>
+        <div style={{ padding: "20px" }}>
+            {/* <UserForm loadUser={loadUser} /> */}
+            <BookTable
+            />
+        </div>
     )
 }
 
