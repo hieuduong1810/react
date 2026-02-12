@@ -10,11 +10,14 @@ const UserPage = () => {
     const [pageSize, setPageSize] = useState(5);
     const [total, setTotal] = useState(0);
 
+    const [loadingTable, setLoadingTable] = useState(false)
+
     useEffect(() => {
         loadUser()
     }, [current, pageSize])
 
     const loadUser = async () => {
+        setLoadingTable(true)
         const res = await fetchAllUserAPI(current, pageSize)
         if (res.data) {
             setDataUsers(res.data.result)
@@ -22,6 +25,7 @@ const UserPage = () => {
             setPageSize(res.data.meta.pageSize)
             setTotal(res.data.meta.total)
         }
+        setLoadingTable(false)
     }
     return (
         <div style={{ padding: "20px" }}>
@@ -34,6 +38,7 @@ const UserPage = () => {
                 total={total}
                 setCurrent={setCurrent}
                 setPageSize={setPageSize}
+                loadingTable={loadingTable}
             />
         </div>
     )

@@ -69,6 +69,7 @@ const CreateUserModal = (props) => {
             open={isModalCreateOpen}
             onOk={() => form.submit()}
             onCancel={() => resetAndCloseModal(false)}
+            // okButtonProps={{ loading: true }}
             maskClosable={false}
             okText={"CREATE"}
         >

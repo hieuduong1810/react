@@ -17,11 +17,13 @@ const BookTable = (props) => {
     const [isModalCreateOpen, setIsModalCreateOpen] = useState(false)
     const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false)
     const [dataUpdate, setDataUpdate] = useState(null)
+    const [loadingTable, setLoadingTable] = useState(false)
 
     useEffect(() => {
         loadBook()
     }, [current, pageSize])
     const loadBook = async () => {
+        setLoadingTable(true)
         const res = await fetchAllBookAPI(current, pageSize)
         if (res.data) {
             setDataBook(res.data.result)
@@ -29,6 +31,7 @@ const BookTable = (props) => {
             setPageSize(res.data.meta.pageSize)
             setTotal(res.data.meta.total)
         }
+        setLoadingTable(false)
     }
 
     const columns = [
@@ -155,6 +158,7 @@ const BookTable = (props) => {
                         showTotal: (total, range) => { return (<div> {range[0]}-{range[1]} trên {total} rows</div>) }
                     }}
                 onChange={onChange}
+                loading={loadingTable}
             />
             <ViewBookDetail
                 isDetailOpen={isDetailOpen}
